@@ -1,23 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Load from "./load"; // 파일 이름이 load.js니까 소문자 주의!
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Load />
     </div>
   );
 }
