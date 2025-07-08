@@ -23,7 +23,6 @@ function Load() {
     return () => clearTimeout(timer);
   }, []);
 
-
   return (
     <div
       style={{
@@ -57,8 +56,7 @@ function Load() {
       </h2>
       {/* Lingro+ 로고 : animate1 */}
       <h1
-        style=
-        {{
+        style={{
           color: "#F2C81B",
           fontFamily: "Cormorant Garamond, serif",
           fontWeight: 600,
@@ -72,7 +70,9 @@ function Load() {
           opacity: 1,
           transition: "all 1.5s ease-in-out",
         }}
-        > Lingro+
+      >
+        {" "}
+        Lingro+
       </h1>
     </div>
   );

@@ -14,7 +14,7 @@ function MainLogin() {
   const BoxRef = useRef();
   const scrollToBottom = () => {
     if (BoxRef.current) {
-        BoxRef.current.scrollTo({
+      BoxRef.current.scrollTo({
         top: BoxRef.current.scrollHeight,
         behavior: "smooth",
       });

@@ -1,7 +1,7 @@
 /* 스크롤 가능한 div에 대한 커스텀 스크롤바 */
 .custom-scroll {
   scrollbar-width: auto; /* Firefox 대응 */
-  scrollbar-color: #00492C #FFFCE4; 
+  scrollbar-color: #00492c #fffce4;
   scroll-behavior: smooth;
 }
 /* 크롬, 엣지,사파리 대응
