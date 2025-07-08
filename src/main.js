@@ -1,49 +1,82 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./load.css"; // 스타일시트 임포트
 
 function MainLogin() {
-  const [animate2, setAnimate2] = useState(false);
+  const [animate1, setAnimate1] = useState(false);
   useEffect(() => {
-    // 3초 후 애니메이션 시작
+    // 3.8초 후 노란 박스 애니메이션 시작
     const timer = setTimeout(() => {
-      setAnimate2(true);
-    }, 3000);
+      setAnimate1(true);
+    }, 3800);
 
     return () => clearTimeout(timer);
   }, []);
+  const BoxRef = useRef();
+  const scrollToBottom = () => {
+    if (BoxRef.current) {
+        BoxRef.current.scrollTo({
+        top: BoxRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    /* 노란 채팅 박스 : animate2 */
     <div
+      /* 노란 박스 : animate1 */
       className="custom-scroll"
+      ref={BoxRef}
       style={{
         backgroundColor: "#FFFCE4",
         position: "absolute",
         borderRadius: "10px",
+        boxShadow: "-20px 5px 0px rgba(0, 0, 0, 0.2)",
         top: "20%",
         left: "12%",
         width: "88%",
         height: "80%",
-        opacity: animate2 ? 1 : 0,
+        opacity: animate1 ? 1 : 0,
         transition: "all 0.3s ease-in-out",
         overflowY: "auto", // 스크롤 가능, 스크롤바는 index.css에서 설정
       }}
     >
       <h1
         style={{
-          color: "#00492C",
+          color: "#656247",
           fontFamily: "Noto Sans KR, sans-serif",
-          fontWeight: 400,
+          fontWeight: 500,
           fontSize: "24px",
           paddingTop: "30px",
           margin: "0px",
           paddingLeft: "100px",
         }}
       >
-        음성 파일을 업로드해주세요.
+        파일명 : 알아서 AI가 요약해준대로 임시로 지정
+        <botton
+          style={{
+            color: "#656247",
+            backgroundColor: "#ECEAD5",
+            fontFamily: "Noto Sans KR, sans-serif",
+            fontWeight: 400,
+            fontSize: "18px",
+            lineHeight: "0.1",
+            justifyContent: "center",
+            textAlign: "center",
+            cursor: "pointer",
+            paddingLeft: "10px",
+            paddingRight: "10px",
+            paddingTop: "0px",
+            paddingBottom: "5px",
+            marginLeft: "10px",
+            borderRadius: "15px",
+          }}
+        >
+          ...
+        </botton>
       </h1>
       <h2
         style={{
-          color: "#00492C",
+          color: "#656247",
           fontFamily: "Noto Sans KR, sans-serif",
           fontWeight: 300,
           fontSize: "15px",
@@ -54,12 +87,13 @@ function MainLogin() {
       >
         {new Date().toLocaleString()} {/* 생성된 (현재) 날짜와 시간 표시 */}
       </h2>
+      {/* 요약 텍스트 본문 */}
       <p
         style={{
-          color: "#00492C",
+          color: "#656247",
           backgroundColor: "#ECEAD5",
           fontFamily: "Noto Sans KR, sans-serif",
-          fontWeight: 300,
+          fontWeight: 400,
           fontSize: "18px",
           marginLeft: "100px",
           marginRight: "100px",
@@ -116,6 +150,19 @@ function MainLogin() {
         재택근무는 미래 업무 환경의 중요한 축으로 자리 잡아가고 있다.
         {/* 값을 어떻게 받아오지 */}
       </p>
+
+      {/* 하단 한번에 이동 버튼 */}
+      <button
+        onClick={scrollToBottom}
+        style={{
+          position: "fixed",
+          left: "50%",
+          bottom: "50px",
+          zIndex: 999,
+        }}
+      >
+        맨 하단 이동
+      </button>
     </div>
   );
 }

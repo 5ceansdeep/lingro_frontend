@@ -3,15 +3,26 @@ import "./load.css"; // 스타일시트 임포트
 
 function Load() {
   const [animate1, setAnimate1] = useState(false);
+  const [animate2, setAnimate2] = useState(false);
 
   useEffect(() => {
-    // 1.5초 후 애니메이션 시작
+    // 2.5초 후 로고 애니메이션 시작
     const timer = setTimeout(() => {
       setAnimate1(true);
-    }, 1500);
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    // 2초 후 Voice to Text 애니메이션 시작
+    const timer = setTimeout(() => {
+      setAnimate2(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
 
   return (
     <div
@@ -26,9 +37,28 @@ function Load() {
         position: "relative",
       }}
     >
+      {/* | Voice to Text : animate2 */}
+      <h2
+        style={{
+          color: "#F2C81B",
+          fontFamily: "Cormorant Garamond, serif",
+          fontWeight: 600,
+          fontSize: "40px",
+          position: "absolute",
+          top: "40%",
+          left: "45%",
+          padding: "0px",
+          margin: "0px",
+          opacity: animate2 ? 0 : 1,
+          transition: "all 0.4s ease-in-out",
+        }}
+      >
+        | Voice to Text
+      </h2>
       {/* Lingro+ 로고 : animate1 */}
       <h1
-        style={{
+        style=
+        {{
           color: "#F2C81B",
           fontFamily: "Cormorant Garamond, serif",
           fontWeight: 600,
@@ -42,8 +72,7 @@ function Load() {
           opacity: 1,
           transition: "all 1.5s ease-in-out",
         }}
-      >
-        Lingro+
+        > Lingro+
       </h1>
     </div>
   );
